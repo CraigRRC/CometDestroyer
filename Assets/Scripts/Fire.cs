@@ -7,7 +7,8 @@ using UnityEngine;
 public class Fire : MonoBehaviour
 {
     public GameObject laser;
-    public GameObject blaster;
+    public GameObject leftBlaster;
+    public GameObject rightBlaster;
     public bool mouseButtonPressed = false;
     public bool canFire = true;
     public float shootCooldown = 0f;
@@ -19,14 +20,20 @@ public class Fire : MonoBehaviour
 
     private void Update()
     {
-        shootCooldown += Time.deltaTime;
+       
         mouseButtonPressed = Input.GetMouseButton(0);
+        if (!canFire)
+        {
+            shootCooldown += Time.deltaTime;
+        }
+        if(shootCooldown > 0.5f)
+        {
+            canFire = true;
+        }
     }
 
     private void FixedUpdate()
-    {
-        
-       
+    {   
         if (mouseButtonPressed && canFire)
         {
             FireProjectile(laser);
@@ -36,8 +43,10 @@ public class Fire : MonoBehaviour
 
     private void FireProjectile(GameObject projectile)
     {
-        Instantiate(projectile, blaster.transform.position, Quaternion.identity);
-        
+        Instantiate(projectile, leftBlaster.transform.position, Quaternion.identity);
+        Instantiate(projectile, rightBlaster.transform.position, Quaternion.identity);
+        shootCooldown = 0f;
+
     }
     
 }

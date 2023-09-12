@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1307169695497599619}
   - component: {fileID: 7615844376055270431}
   - component: {fileID: -7529052400321768359}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Comet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

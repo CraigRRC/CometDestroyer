@@ -15,10 +15,13 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
     }
+    private void Update()
+    {
+        CleanPlayerInput();
+    }
 
     private void FixedUpdate()
     {
-        CleanPlayerInput();
         //rb.velocity = uncleanPlayerInput.normalized * cleanedMagnitude * moveSpeed;
         rb.AddForce(uncleanPlayerInput.normalized * cleanedMagnitude * moveSpeed, ForceMode2D.Force);
     }
