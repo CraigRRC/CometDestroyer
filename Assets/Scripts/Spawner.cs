@@ -25,7 +25,8 @@ public class Spawner : MonoBehaviour
     {
         if (canWeSpawn)
         {
-            comet = Instantiate<Rigidbody2D>(comet, new Vector2(randomSpawnLocation, transform.position.y), Quaternion.identity);
+            comet = Instantiate(comet, new Vector2(randomSpawnLocation, transform.position.y), Quaternion.identity);
+            comet.gameObject.SetActive(true);
             comet.AddRelativeForce(Vector2.down * forceAmount, ForceMode2D.Impulse);
             comet.gravityScale = gravity;
             canWeSpawn = false;

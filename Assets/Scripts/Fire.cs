@@ -9,7 +9,7 @@ public class Fire : MonoBehaviour
     public GameObject laser;
     public GameObject leftBlaster;
     public GameObject rightBlaster;
-    public bool mouseButtonPressed = false;
+    public bool fireButtonPressed = false;
     public bool canFire = true;
     public float shootCooldown = 0f;
 
@@ -21,7 +21,7 @@ public class Fire : MonoBehaviour
     private void Update()
     {
        
-        mouseButtonPressed = Input.GetMouseButton(0);
+        fireButtonPressed = Input.GetButton("Jump");
         if (!canFire)
         {
             shootCooldown += Time.deltaTime;
@@ -34,7 +34,7 @@ public class Fire : MonoBehaviour
 
     private void FixedUpdate()
     {   
-        if (mouseButtonPressed && canFire)
+        if (fireButtonPressed && canFire)
         {
             FireProjectile(laser);
             canFire = false;
