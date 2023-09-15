@@ -7,15 +7,16 @@ public class Spawner : MonoBehaviour
     public Rigidbody2D comet;
     public float forceAmount = 50f;
     private float randomSpawnLocation;
-    public float spawnTimer;
+    private float runningTime;
     public bool canWeSpawn = true;
     public float gravity = 0f;
+    public float spawnFrequency = 2f;
 
     private void Update()
     {
         randomSpawnLocation = Random.Range(-14f, 14f);
-        spawnTimer += Time.deltaTime;
-        if (spawnTimer > 3f)
+        runningTime += Time.deltaTime;
+        if (runningTime > spawnFrequency)
         {
             canWeSpawn = true;
         }
@@ -30,7 +31,7 @@ public class Spawner : MonoBehaviour
             comet.AddRelativeForce(Vector2.down * forceAmount, ForceMode2D.Impulse);
             comet.gravityScale = gravity;
             canWeSpawn = false;
-            spawnTimer = 0f;
+            runningTime = 0f;
         }
         
     }
