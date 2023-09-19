@@ -9,7 +9,6 @@ public class Spawner : MonoBehaviour
     private float randomSpawnLocation;
     private float runningTime;
     public bool canWeSpawn = true;
-    public float gravity = 0f;
     public float spawnFrequency = 1f;
 
     private void Update()
@@ -29,7 +28,6 @@ public class Spawner : MonoBehaviour
             comet = Instantiate(comet, new Vector2(randomSpawnLocation, transform.position.y), Quaternion.identity);
             comet.gameObject.SetActive(true);
             comet.AddRelativeForce(Vector2.down * forceAmount, ForceMode2D.Impulse);
-            comet.gravityScale = gravity;
             canWeSpawn = false;
             runningTime = 0f;
         }
