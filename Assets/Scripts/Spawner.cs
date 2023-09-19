@@ -5,12 +5,12 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public Rigidbody2D comet;
-    public float forceAmount = 50f;
+    public float forceAmount = 4f;
     private float randomSpawnLocation;
     private float runningTime;
     public bool canWeSpawn = true;
     public float gravity = 0f;
-    public float spawnFrequency = 2f;
+    public float spawnFrequency = 1f;
 
     private void Update()
     {
