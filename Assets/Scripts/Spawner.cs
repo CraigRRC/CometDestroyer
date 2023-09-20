@@ -27,7 +27,7 @@ public class Spawner : MonoBehaviour
     public Rigidbody2D[] levelFive;
     public int i = 0;
 
-    public delegate void LevelSwitchEventHandler(Enum level);
+    public delegate void LevelSwitchEventHandler(int level);
     public event LevelSwitchEventHandler OnLevelSwitch;
 
     
@@ -66,6 +66,13 @@ public class Spawner : MonoBehaviour
         {
             i = 0;
         }
+
+        if(runningTime > 10f)
+        {
+            runningTime = 0f;
+            levelState++;
+            LevelChanged(levelState);
+        }
         
     }
 
@@ -99,19 +106,19 @@ public class Spawner : MonoBehaviour
         {
             case 1:
                 Debug.Log("test1");
-                OnLevelSwitch?.Invoke(LevelState.One);
+                OnLevelSwitch?.Invoke((Int32)LevelState.One);
                 break;
             case 2:
-                OnLevelSwitch?.Invoke(LevelState.Two);
+                OnLevelSwitch?.Invoke((Int32)LevelState.Two);
                 break;
             case 3:
-                OnLevelSwitch?.Invoke(LevelState.Three);
+                OnLevelSwitch?.Invoke((Int32)LevelState.Three);
                 break;
             case 4:
-                OnLevelSwitch?.Invoke(LevelState.Four);
+                OnLevelSwitch?.Invoke((Int32)LevelState.Four);
                 break;
             case 5:
-                OnLevelSwitch?.Invoke(LevelState.Five);
+                OnLevelSwitch?.Invoke((Int32)LevelState.Five);
                 break;
         }
     }
@@ -125,5 +132,6 @@ public class Spawner : MonoBehaviour
         Three,
         Four,
         Five,
+        EndGame,
     }
 }
