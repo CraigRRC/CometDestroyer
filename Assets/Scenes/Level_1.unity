@@ -305,8 +305,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   comet: {fileID: 7133384564332008362, guid: 9b4210444f0243d4cbde51f2dbc5e2cf, type: 3}
   forceAmount: 4
+  runningTime: 0
   canWeSpawn: 1
   spawnFrequency: 2
+  levelOneSpawnCount: 20
+  levelTwoSpawnCount: 40
+  levelThreeSpawnCount: 60
+  levelFourSpawnCount: 80
+  levelFiveSpawnCount: 100
+  levelState: 0
+  levelOne: []
+  levelTwo: []
+  levelThree: []
+  levelFour: []
+  levelFive: []
+  i: 0
 --- !u!1 &1231167327
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,6 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 468d4a11676463c49b499fd55170b0e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawner: {fileID: 1151692949}
 --- !u!1001 &375582064815610863
 PrefabInstance:
   m_ObjectHideFlags: 0
