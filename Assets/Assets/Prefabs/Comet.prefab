@@ -163,7 +163,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cometChunk: {fileID: 9114450478189233647, guid: f92d4dc9e1453d84390d3656775176a6, type: 3}
-  explodeForce: 5
 --- !u!114 &7683579327435859033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,4 +175,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c485be2f52a936489951367b788071f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 0.5
+  gravity: 0

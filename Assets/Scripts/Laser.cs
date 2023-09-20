@@ -6,7 +6,7 @@ using UnityEngine;
 public class Laser : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public float firePower = 50f;
+    public float firePower = 70f;
 
     private void Awake()
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GravityMod : MonoBehaviour
 {
-    public float gravity = 0.5f;
+    public float gravity = 0f;
 
     private void Awake()
     {
