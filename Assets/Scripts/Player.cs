@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
@@ -13,9 +14,11 @@ public class Player : MonoBehaviour
     public OnPlayerDeathEvent m_OnPlayerDeathEvent;
     private SpriteRenderer spriteRenderer = null;
     private PolygonCollider2D polygonCollider = null;
+    private float playerVulnerabilityTime = 2f;
     private Vector2 playerSpawnPos;
     private Vector3 playerInitPos = new Vector3(0f, -7f, 0f);
-    private PlayerStates playerStates;
+    public PlayerStates playerStates;
+    public float invulTimer = 0f;
 
    
 
@@ -39,12 +42,20 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
-        playerStates = PlayerStates.Alive;
+        playerStates = PlayerStates.Invul;
     }
 
     private void Update()
     {
 
+        if(playerStates == PlayerStates.Invul)
+        {
+            polygonCollider.enabled = false;
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.2f);
+            StartCoroutine(PlayerVulnerable());
+            
+           
+        }
     }
 
 
@@ -71,6 +82,13 @@ public class Player : MonoBehaviour
         Dead,
     }
 
+    private IEnumerator PlayerVulnerable()
+    {
+        yield return new WaitForSeconds(playerVulnerabilityTime);
+        spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1f);
+        playerStates = PlayerStates.Alive;
+        polygonCollider.enabled = true;
+    }
 
     public bool IsDead() { return playerStates == PlayerStates.Dead;}
     public void SetPlayerState(PlayerStates state) { playerStates = state; }

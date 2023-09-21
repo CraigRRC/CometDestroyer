@@ -226,6 +226,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3768637362569465114, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768637362569465114, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
       propertyPath: onPlayerDeath.m_PersistentCalls.m_Calls.Array.size
       value: 1

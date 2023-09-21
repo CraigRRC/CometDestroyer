@@ -34,7 +34,6 @@ public class PlayerSpawner : MonoBehaviour
 
     public void OnPlayerDeath(Vector2 location)
     {
-        Debug.Log("respawning?");
         playerRespawnPos = location;
         StartCoroutine(RespawnPlayer());
     }
@@ -42,7 +41,6 @@ public class PlayerSpawner : MonoBehaviour
     private IEnumerator RespawnPlayer()
     {
         yield return new WaitForSeconds(playerRespawnTimer);
-        Debug.Log("hello?");
         player.gameObject.SetActive(true);
         player.transform.position = playerRespawnPos;
     }
