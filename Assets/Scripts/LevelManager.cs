@@ -45,7 +45,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         spawner.OnLevelSwitch -= OnLevelUpdate;
     }
