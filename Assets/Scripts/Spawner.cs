@@ -12,7 +12,7 @@ public class Spawner : MonoBehaviour
     public float runningTime;
     public bool canWeSpawn = true;
     public float spawnFrequency = 1f;
-    public int levelOneSpawnCount = 20;
+    public int levelOneSpawnCount = 5;
     public int levelTwoSpawnCount = 40;
     public int levelThreeSpawnCount = 60;
     public int levelFourSpawnCount = 80;
@@ -62,27 +62,30 @@ public class Spawner : MonoBehaviour
         {
             canWeSpawn = true;
         }
-        if (newLevel)
-        {
-            i = 0;
-        }
 
         if(runningTime > 10f)
         {
             runningTime = 0f;
             levelState++;
             LevelChanged(levelState);
+            i = 0;
         }
         
     }
 
     private void FixedUpdate()
     {
-        if (canWeSpawn && i < levelOneSpawnCount)
+        //Switch based on levelState.
+        SpawnComet(canWeSpawn, levelOne);
+    }
+
+    private void SpawnComet(bool spawn, Rigidbody2D[] arrayToSpawn)
+    {
+        if (spawn && i < arrayToSpawn.Length)
         {
-            
-            comet = Instantiate(levelOne[i], new Vector2(randomSpawnLocation, transform.position.y), Quaternion.identity);
-            levelOne[i] = null;
+
+            comet = Instantiate(arrayToSpawn[i], new Vector2(randomSpawnLocation, transform.position.y), Quaternion.identity);
+            arrayToSpawn[i] = null;
             comet.gameObject.SetActive(true);
             comet.AddRelativeForce(Vector2.down * forceAmount, ForceMode2D.Impulse);
             canWeSpawn = false;
@@ -126,7 +129,6 @@ public class Spawner : MonoBehaviour
 
     public enum LevelState
     {
-        Change,
         One,
         Two,
         Three,

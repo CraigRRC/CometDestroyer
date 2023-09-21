@@ -440,11 +440,11 @@ MonoBehaviour:
   runningTime: 0
   canWeSpawn: 1
   spawnFrequency: 2
-  levelOneSpawnCount: 20
-  levelTwoSpawnCount: 40
-  levelThreeSpawnCount: 60
-  levelFourSpawnCount: 80
-  levelFiveSpawnCount: 100
+  levelOneSpawnCount: 2
+  levelTwoSpawnCount: 2
+  levelThreeSpawnCount: 2
+  levelFourSpawnCount: 2
+  levelFiveSpawnCount: 2
   levelState: 0
   levelOne: []
   levelTwo: []

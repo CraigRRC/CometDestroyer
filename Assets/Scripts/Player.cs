@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private Vector3 playerInitPos = new Vector3(0f, -7f, 0f);
     public PlayerStates playerStates;
     public float invulTimer = 0f;
+    private bool playersFirstLife = true;
 
    
 
@@ -42,7 +43,11 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
-        playerStates = PlayerStates.Invul;
+        if (!playersFirstLife)
+        {
+            playerStates = PlayerStates.Invul;
+        }
+       
     }
 
     private void Update()
@@ -66,6 +71,7 @@ public class Player : MonoBehaviour
             m_OnPlayerDeathEvent.Invoke(playerSpawnPos);
             Debug.Log("did we invoke?");
             playerStates = PlayerStates.Dead;
+            playersFirstLife = false;
             gameObject.SetActive(false);
         }
     }
