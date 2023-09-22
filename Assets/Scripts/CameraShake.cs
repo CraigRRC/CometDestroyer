@@ -28,8 +28,8 @@ public class CameraShake : MonoBehaviour
     {
         // position x and y for more violent shakes.
 
-       
 
+        Debug.Log(cam.gameObject.name);
         //gameCamera.transform.position = initPos;
 
         // rotation x and y for very gradual shakes.
@@ -38,7 +38,7 @@ public class CameraShake : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Debug.Log(cam.gameObject.name);
         //gameCamera.transform.position = initPos;
     }
 
@@ -47,6 +47,7 @@ public class CameraShake : MonoBehaviour
         Debug.Log("are we shaking?");
         for (int i = 0; i < cameraShakePositions.Length; ++i)
         {
+            //bugged. Cam is somehow null here, but not null in awake and start.
             //cam.transform.Translate(cameraShakePositions[i] * Time.deltaTime);
         }
     }
