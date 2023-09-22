@@ -166,7 +166,7 @@ MonoBehaviour:
   cameraShake:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3572501247198142302, guid: e3e1e5ed83610ed4482069737a46b32a, type: 3}
+      - m_Target: {fileID: -4495937762508596090, guid: e3e1e5ed83610ed4482069737a46b32a, type: 3}
         m_TargetAssemblyTypeName: CameraShake, Assembly-CSharp
         m_MethodName: Shake
         m_Mode: 1

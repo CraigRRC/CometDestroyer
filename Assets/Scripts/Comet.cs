@@ -12,6 +12,7 @@ public class Comet : MonoBehaviour
     public Rigidbody2D cometChunk;
     private float spawnOffset = 1f;
     private bool doOnce = true;
+    public UnityEvent cameraShake;
 
     void Awake()
     {
@@ -29,8 +30,7 @@ public class Comet : MonoBehaviour
             //spawn an explosion tho
             if (doOnce)
             {
-                //Shake Camera
-
+                cameraShake.Invoke();
                 //spawn mini comet to the right
                 Vector2 rightOffsetVector = new Vector2(transform.position.x + spawnOffset, transform.position.y - spawnOffset);
                 Rigidbody2D rightComet = Instantiate(cometChunk, rightOffsetVector, Quaternion.identity);
