@@ -163,6 +163,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cometChunk: {fileID: 9114450478189233647, guid: f92d4dc9e1453d84390d3656775176a6, type: 3}
+  cameraShake:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3572501247198142302, guid: e3e1e5ed83610ed4482069737a46b32a, type: 3}
+        m_TargetAssemblyTypeName: CameraShake, Assembly-CSharp
+        m_MethodName: Shake
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7683579327435859033
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -76,10 +76,30 @@ public class Spawner : MonoBehaviour
     private void FixedUpdate()
     {
         //Switch based on levelState.
-        SpawnComet(canWeSpawn, levelOne);
+        switch (levelState)
+        {
+            case 0:
+                SpawnComets(canWeSpawn, levelOne);
+                break;
+            case 1:
+                SpawnComets(canWeSpawn, levelTwo);
+                break;
+            case 2:
+                SpawnComets(canWeSpawn, levelThree);
+                break;
+            case 3:
+                SpawnComets(canWeSpawn, levelFour);
+                break;
+            case 4:
+                SpawnComets(canWeSpawn, levelFive);
+                break;
+            case 5:
+                break;
+        }
+        
     }
 
-    private void SpawnComet(bool spawn, Rigidbody2D[] arrayToSpawn)
+    private void SpawnComets(bool spawn, Rigidbody2D[] arrayToSpawn)
     {
         if (spawn && i < arrayToSpawn.Length)
         {
