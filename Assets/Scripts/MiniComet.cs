@@ -6,6 +6,10 @@ using UnityEngine;
 public class MiniComet : Comet
 {
     private SpriteRenderer miniSpriteRenderer;
+
+    public delegate void MiniCometCameraShakeHandler();
+    public event MiniCometCameraShakeHandler miniCometCameraShake;
+
     private void Start()
     {
         miniSpriteRenderer = GetComponent<SpriteRenderer>();
@@ -16,6 +20,8 @@ public class MiniComet : Comet
     {
         if (collision.gameObject.GetComponent<Laser>())
         {
+            //shake
+            miniCometCameraShake?.Invoke();
             collision.gameObject.SetActive(false);
             gameObject.SetActive(false);
         }

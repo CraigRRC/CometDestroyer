@@ -510,15 +510,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawner: {fileID: 1151692949}
   initPos: {x: 0, y: 0, z: 0}
-  cameraShakePositions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  minShakeRange: 0.1
-  maxShakeRange: 0.2
+  cameraTargetPos: {x: 0, y: 0}
+  distToTarget: {x: 0, y: 0}
+  distToOrigin: {x: 0, y: 0}
   cameraZ: -10
+  cameraState: 0
+  shakeSpeed: 10
+  distToTargetMag: 0
+  distToOriginMag: 0
+  doOnce: 1
+  shakeRadius: 1
 --- !u!20 &6094589807672076373
 Camera:
   m_ObjectHideFlags: 0

@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b746eabd9974b8045b6b742ef5a4c7cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cometChunk: {fileID: 9114450478189233647, guid: f92d4dc9e1453d84390d3656775176a6, type: 3}
+  cometChunk: {fileID: -2595974817081585523, guid: f92d4dc9e1453d84390d3656775176a6, type: 3}
 --- !u!114 &7683579327435859033
 MonoBehaviour:
   m_ObjectHideFlags: 0
