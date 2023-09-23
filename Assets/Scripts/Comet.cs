@@ -12,7 +12,9 @@ public class Comet : MonoBehaviour
     public Rigidbody2D cometChunk;
     private float spawnOffset = 1f;
     private bool doOnce = true;
-    public UnityEvent cameraShake;
+
+    public delegate void CameraShakeHandler();
+    public event CameraShakeHandler CameraShake;
 
     void Awake()
     {
@@ -30,7 +32,8 @@ public class Comet : MonoBehaviour
             //spawn an explosion tho
             if (doOnce)
             {
-                cameraShake.Invoke();
+                //shake
+                CameraShake?.Invoke();
                 //spawn mini comet to the right
                 Vector2 rightOffsetVector = new Vector2(transform.position.x + spawnOffset, transform.position.y - spawnOffset);
                 Rigidbody2D rightComet = Instantiate(cometChunk, rightOffsetVector, Quaternion.identity);
@@ -45,5 +48,11 @@ public class Comet : MonoBehaviour
                 doOnce = false;
             }
         }
+    }
+
+    private void OnDisable()
+    {   //unsubscribe from the camera shake event when we die.
+        //CameraShake
+        
     }
 }

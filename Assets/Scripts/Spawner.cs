@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public Rigidbody2D comet;
+    public Comet comet;
     public float forceAmount = 4f;
     private float randomSpawnLocation;
     public float runningTime;
@@ -20,15 +20,18 @@ public class Spawner : MonoBehaviour
     private bool newLevel = false;
     public int levelState;
 
-    public Rigidbody2D[] levelOne;
-    public Rigidbody2D[] levelTwo;
-    public Rigidbody2D[] levelThree;
-    public Rigidbody2D[] levelFour;
-    public Rigidbody2D[] levelFive;
+    public Comet[] levelOne;
+    public Comet[] levelTwo;
+    public Comet[] levelThree;
+    public Comet[] levelFour;
+    public Comet[] levelFive;
     public int i = 0;
 
     public delegate void LevelSwitchEventHandler(int level);
     public event LevelSwitchEventHandler OnLevelSwitch;
+
+    public delegate void CometReferenceHandler(Comet comet);
+    public event CometReferenceHandler CometReference;
 
     
 
@@ -36,11 +39,11 @@ public class Spawner : MonoBehaviour
     {
         levelState = (Int32)LevelState.One;
 
-        levelOne = new Rigidbody2D[levelOneSpawnCount];
-        levelTwo = new Rigidbody2D[levelTwoSpawnCount];
-        levelThree = new Rigidbody2D[levelThreeSpawnCount];
-        levelFour = new Rigidbody2D[levelFourSpawnCount];
-        levelFive = new Rigidbody2D[levelFiveSpawnCount];
+        levelOne = new Comet[levelOneSpawnCount];
+        levelTwo = new Comet[levelTwoSpawnCount];
+        levelThree = new Comet[levelThreeSpawnCount];
+        levelFour = new Comet[levelFourSpawnCount];
+        levelFive = new Comet[levelFiveSpawnCount];
 
         FillLevel(levelOne, levelOneSpawnCount);
         FillLevel(levelTwo, levelTwoSpawnCount);
@@ -99,26 +102,28 @@ public class Spawner : MonoBehaviour
         
     }
 
-    private void SpawnComets(bool spawn, Rigidbody2D[] arrayToSpawn)
+    private void SpawnComets(bool spawn, Comet[]arrayToSpawn)
     {
         if (spawn && i < arrayToSpawn.Length)
         {
 
             comet = Instantiate(arrayToSpawn[i], new Vector2(randomSpawnLocation, transform.position.y), Quaternion.identity);
+            //grab a reference to this comet.
+            CometReference?.Invoke(comet);
             arrayToSpawn[i] = null;
             comet.gameObject.SetActive(true);
-            comet.AddRelativeForce(Vector2.down * forceAmount, ForceMode2D.Impulse);
+            comet.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.down * forceAmount, ForceMode2D.Impulse);
             canWeSpawn = false;
             i++;
             runningTime = 0f;
         }
     }
 
-    private void FillLevel(Rigidbody2D[] level, int count)
+    private void FillLevel(Comet[]level, int count)
     {
         for (int i = 0; i < count; i++)
         {
-            level[i] = comet.GetComponent<Rigidbody2D>();
+            level[i] = comet;
         }
     }
 
