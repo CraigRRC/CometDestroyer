@@ -13,10 +13,10 @@ public class Spawner : MonoBehaviour
     public bool canWeSpawn = true;
     public float spawnFrequency = 1f;
     public int levelOneSpawnCount = 5;
-    public int levelTwoSpawnCount = 40;
-    public int levelThreeSpawnCount = 60;
-    public int levelFourSpawnCount = 80;
-    public int levelFiveSpawnCount = 100;
+    public int levelTwoSpawnCount = 5;
+    public int levelThreeSpawnCount = 5;
+    public int levelFourSpawnCount = 5;
+    public int levelFiveSpawnCount = 5;
     private bool newLevel = false;
     public int levelState;
 
@@ -133,7 +133,6 @@ public class Spawner : MonoBehaviour
         switch (level)
         {
             case 1:
-                Debug.Log("test1");
                 OnLevelSwitch?.Invoke((Int32)LevelState.One);
                 break;
             case 2:

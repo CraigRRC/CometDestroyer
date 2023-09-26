@@ -6,9 +6,16 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public Spawner spawner;
+    public GravityMod comet;
+    public GravityMod miniComet;
+
+    public float levelOneGravity = 0f;
+    public float levelTwoGravity = 0.1f;
+    public float levelThreeGravity = 0.2f;
+    public float levelFourGravity = 0.3f;
+    public float levelFiveGravity = 0.4f;
     private void Start()
     {
-        Debug.Log("TestLe1");
         spawner.OnLevelSwitch += OnLevelUpdate;
     }
 
@@ -22,22 +29,32 @@ public class LevelManager : MonoBehaviour
         switch (level)
         {
             case 0:
-                Debug.Log("do something");
+                Debug.Log("Level 1");
+                comet.gravity = levelOneGravity;
+                miniComet.gravity = levelOneGravity;
                 break;
             case 1:
-                Debug.Log("Level 1");
+                Debug.Log("Level 2");
+                comet.gravity = levelTwoGravity;
+                miniComet.gravity = levelTwoGravity;
                 break;
             case 2:
-                Debug.Log("Level 2");
+                Debug.Log("Level 3");
+                comet.gravity = levelThreeGravity;
+                miniComet.gravity = levelThreeGravity;
                 break;
             case 3:
-                Debug.Log("Level 3");
+                Debug.Log("Level 4");
+                comet.gravity = levelFourGravity;
+                miniComet.gravity = levelFourGravity;
                 break;
             case 4:
-                Debug.Log("Level 4");
+                Debug.Log("Level 5");
+                comet.gravity = levelFiveGravity;
+                miniComet.gravity = levelFiveGravity;
                 break;
             case 5:
-                Debug.Log("Level 5");
+                Debug.Log("End?");
                 break;
             default:
                 Debug.Log("do Nothing");
