@@ -1185,6 +1185,7 @@ MonoBehaviour:
   shieldArt: {fileID: 121112128197609934}
   playerStates: 0
   invulTimer: 0
+  availiableShield: 0
 --- !u!114 &986798162574068062
 MonoBehaviour:
   m_ObjectHideFlags: 0

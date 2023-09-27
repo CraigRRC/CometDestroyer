@@ -186,10 +186,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 121112128197609934, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3590169720739046752, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -230,9 +226,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5513498165985514982, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: m_Enabled
-      value: 0
+    - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
+      propertyPath: availiableShield
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
       propertyPath: m_OnPlayerDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target

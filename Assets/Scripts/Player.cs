@@ -23,6 +23,9 @@ public class Player : MonoBehaviour
     public float invulTimer = 0f;
     private bool playersFirstLife = true;
 
+    public int availiableShield = 2;
+    
+
    
 
     private void Awake()
@@ -33,7 +36,6 @@ public class Player : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         shieldCollider.enabled = false;
         shieldArt.enabled = false;
-        
 
 
         spriteRenderer.color = Color.magenta;
@@ -59,17 +61,30 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+       
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            playerStates = PlayerStates.Shielded;
+            if(availiableShield > -1)
+            {
+                playerStates = PlayerStates.Shielded;
+                availiableShield -= -1;
+            }
+            
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
+            if(availiableShield <= 2f)
+            {
+                availiableShield += 1 * (int)Time.deltaTime;
+            }
             playerStates = PlayerStates.Alive;
             shieldArt.enabled = false;
             shieldCollider.enabled = false;
             polygonCollider.enabled = true;
         }
+       
+
+       
 
         if(playerStates == PlayerStates.Invul)
         {
@@ -81,6 +96,7 @@ public class Player : MonoBehaviour
         }
         else if(playerStates == PlayerStates.Shielded)
         {
+            
             shieldArt.enabled = true;
             shieldCollider.enabled = true;
             polygonCollider.enabled = false;
