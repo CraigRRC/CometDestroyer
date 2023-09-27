@@ -14,9 +14,11 @@ public class Player : MonoBehaviour
     public OnPlayerDeathEvent m_OnPlayerDeathEvent;
     private SpriteRenderer spriteRenderer = null;
     private PolygonCollider2D polygonCollider = null;
-    private float playerVulnerabilityTime = 2f;
+    public CircleCollider2D shieldCollider = null;
+    public SpriteRenderer shieldArt = null;
+    
+    private float playerVulnerabilityTime = 3f;
     private Vector2 playerSpawnPos;
-    private Vector3 playerInitPos = new Vector3(0f, -7f, 0f);
     public PlayerStates playerStates;
     public float invulTimer = 0f;
     private bool playersFirstLife = true;
@@ -29,6 +31,11 @@ public class Player : MonoBehaviour
         playerSpawnPos = (Vector2)transform.position;
         polygonCollider = GetComponent<PolygonCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        shieldCollider.enabled = false;
+        shieldArt.enabled = false;
+        
+
+
         spriteRenderer.color = Color.magenta;
     }
 
@@ -52,15 +59,33 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            playerStates = PlayerStates.Shielded;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            playerStates = PlayerStates.Alive;
+            shieldArt.enabled = false;
+            shieldCollider.enabled = false;
+            polygonCollider.enabled = true;
+        }
 
         if(playerStates == PlayerStates.Invul)
         {
+            shieldArt.enabled = true;
+            shieldCollider.enabled = true;
             polygonCollider.enabled = false;
             spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.2f);
             StartCoroutine(PlayerVulnerable());
-            
-           
         }
+        else if(playerStates == PlayerStates.Shielded)
+        {
+            shieldArt.enabled = true;
+            shieldCollider.enabled = true;
+            polygonCollider.enabled = false;
+        }
+
     }
 
 
@@ -85,6 +110,7 @@ public class Player : MonoBehaviour
     {
         Alive,
         Invul,
+        Shielded,
         Dead,
     }
 
@@ -93,6 +119,8 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(playerVulnerabilityTime);
         spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1f);
         playerStates = PlayerStates.Alive;
+        shieldArt.enabled = false;
+        shieldCollider.enabled = false;
         polygonCollider.enabled = true;
     }
 

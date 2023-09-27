@@ -11,6 +11,7 @@ public class Fire : MonoBehaviour
     public bool fireButtonPressed = false;
     public bool canFire = true;
     public float shootCooldown = 0f;
+    public float reloadTime = 0.5f;
 
     private void Awake()
     {
@@ -25,7 +26,7 @@ public class Fire : MonoBehaviour
         {
             shootCooldown += Time.deltaTime;
         }
-        if(shootCooldown > 0.5f)
+        if(shootCooldown > reloadTime)
         {
             canFire = true;
         }

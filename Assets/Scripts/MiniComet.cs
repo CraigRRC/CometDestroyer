@@ -25,5 +25,10 @@ public class MiniComet : Comet
             collision.gameObject.SetActive(false);
             gameObject.SetActive(false);
         }
+        else if(collision.gameObject.layer == 7)
+        {
+            miniCometCameraShake?.Invoke();
+            gameObject.SetActive(false);
+        }
     }
 }

@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 uncleanPlayerInput;
     private Vector2 playerInputDirection;
     private float cleanedMagnitude;
-    public float moveSpeed = 10f;
+    public float moveSpeed = 2.7f;
     private Rigidbody2D rb;
     public GameObject mainEngine;
     public GameObject rightEngine;

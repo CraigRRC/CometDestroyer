@@ -7,25 +7,28 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public Comet comet;
-    public float forceAmount = 4f;
+    public float forceAmount = 3f;
     private float randomSpawnLocation;
     public float runningTime;
     public bool canWeSpawn = true;
     public float spawnFrequency = 1f;
-    public int levelOneSpawnCount = 5;
-    public int levelTwoSpawnCount = 5;
-    public int levelThreeSpawnCount = 5;
-    public int levelFourSpawnCount = 5;
-    public int levelFiveSpawnCount = 5;
-    private bool newLevel = false;
+    public int levelOneSpawnCount = 10;
+    public int levelTwoSpawnCount = 10;
+    public int levelThreeSpawnCount = 10;
+    public int levelFourSpawnCount = 10;
+    public int levelFiveSpawnCount = 10;
     public int levelState;
-
     public Comet[] levelOne;
     public Comet[] levelTwo;
     public Comet[] levelThree;
     public Comet[] levelFour;
     public Comet[] levelFive;
     public int i = 0;
+    public float xOffset;
+    public float minOffset = -5f;
+    public float maxOffset = 5f;
+    public float minSpawnDistance = -10f;
+    public float maxSpawnDistance = 10f;
 
     public delegate void LevelSwitchEventHandler(int level);
     public event LevelSwitchEventHandler OnLevelSwitch;
@@ -59,7 +62,7 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
-        randomSpawnLocation = UnityEngine.Random.Range(-14f, 14f);
+        randomSpawnLocation = UnityEngine.Random.Range(minSpawnDistance, maxSpawnDistance);
         runningTime += Time.deltaTime;
         if (runningTime > spawnFrequency)
         {
@@ -73,6 +76,8 @@ public class Spawner : MonoBehaviour
             LevelChanged(levelState);
             i = 0;
         }
+
+        xOffset = UnityEngine.Random.Range(-5f, 5f);
         
     }
 
@@ -112,7 +117,7 @@ public class Spawner : MonoBehaviour
             CometReference?.Invoke(comet);
             arrayToSpawn[i] = null;
             comet.gameObject.SetActive(true);
-            comet.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.down * forceAmount, ForceMode2D.Impulse);
+            comet.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(xOffset, -1f) * forceAmount, ForceMode2D.Impulse);
             canWeSpawn = false;
             i++;
             runningTime = 0f;
@@ -132,19 +137,19 @@ public class Spawner : MonoBehaviour
     {
         switch (level)
         {
-            case 1:
+            case 0:
                 OnLevelSwitch?.Invoke((Int32)LevelState.One);
                 break;
-            case 2:
+            case 1:
                 OnLevelSwitch?.Invoke((Int32)LevelState.Two);
                 break;
-            case 3:
+            case 2:
                 OnLevelSwitch?.Invoke((Int32)LevelState.Three);
                 break;
-            case 4:
+            case 3:
                 OnLevelSwitch?.Invoke((Int32)LevelState.Four);
                 break;
-            case 5:
+            case 4:
                 OnLevelSwitch?.Invoke((Int32)LevelState.Five);
                 break;
         }
