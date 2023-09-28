@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     public float availiableShield = 2f;
     public bool canShield = true;
     public bool playerHoldingShift;
+
     
 
    
@@ -96,11 +97,23 @@ public class Player : MonoBehaviour
         //make into switch case.
         if(playerStates == PlayerStates.Invul)
         {
+            invulTimer += Time.deltaTime;
             shieldArt.enabled = true;
             shieldCollider.enabled = true;
             polygonCollider.enabled = false;
             spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.2f);
-            StartCoroutine(PlayerVulnerable());
+            if(invulTimer > playerVulnerabilityTime)
+            {
+                spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1f);
+                shieldArt.enabled = false;
+                shieldCollider.enabled = false;
+                polygonCollider.enabled = true;
+                playerStates = PlayerStates.Alive;
+                invulTimer = 0f;
+                
+            }
+
+            //StartCoroutine(PlayerVulnerable());
             
         }
         else if(playerStates == PlayerStates.Shielded)
@@ -147,10 +160,7 @@ public class Player : MonoBehaviour
     private IEnumerator PlayerVulnerable()
     {
         yield return new WaitForSeconds(playerVulnerabilityTime);
-        spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1f);
-        shieldArt.enabled = false;
-        shieldCollider.enabled = false;
-        polygonCollider.enabled = true;
+        
     }
 
     public bool IsDead() { return playerStates == PlayerStates.Dead;}
