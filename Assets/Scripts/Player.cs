@@ -23,7 +23,9 @@ public class Player : MonoBehaviour
     public float invulTimer = 0f;
     private bool playersFirstLife = true;
 
-    public int availiableShield = 2;
+    public float availiableShield = 2f;
+    public bool canShield = true;
+    public bool playerHoldingShift;
     
 
    
@@ -61,31 +63,37 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-       
-        if (Input.GetKey(KeyCode.LeftShift))
+        if(canShield)
         {
-            if(availiableShield > -1)
+            if (Input.GetKey(KeyCode.LeftShift))
             {
+
+                //check to see if we have any shield to use
                 playerStates = PlayerStates.Shielded;
-                availiableShield -= -1;
+
+
             }
-            
         }
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
+       
+        if (!canShield && playerStates != PlayerStates.Invul)
         {
-            if(availiableShield <= 2f)
-            {
-                availiableShield += 1 * (int)Time.deltaTime;
-            }
             playerStates = PlayerStates.Alive;
             shieldArt.enabled = false;
             shieldCollider.enabled = false;
             polygonCollider.enabled = true;
         }
-       
-
-       
-
+        
+        if(availiableShield < 2f)
+        {
+            availiableShield += Time.deltaTime / 10f;
+        }
+        if(availiableShield > 0.5f && playerStates != PlayerStates.Invul)
+        {
+            canShield = true;
+        }
+            
+        
+        //make into switch case.
         if(playerStates == PlayerStates.Invul)
         {
             shieldArt.enabled = true;
@@ -93,15 +101,21 @@ public class Player : MonoBehaviour
             polygonCollider.enabled = false;
             spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.2f);
             StartCoroutine(PlayerVulnerable());
+            
         }
         else if(playerStates == PlayerStates.Shielded)
         {
-            
+            availiableShield -= Time.deltaTime;
+            if(availiableShield < 0.1f)
+            {
+                playerHoldingShift = false;
+                canShield = false;
+            }
+            // availiable shield descreases by time.deltatime
             shieldArt.enabled = true;
             shieldCollider.enabled = true;
             polygonCollider.enabled = false;
         }
-
     }
 
 
@@ -134,7 +148,6 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(playerVulnerabilityTime);
         spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1f);
-        playerStates = PlayerStates.Alive;
         shieldArt.enabled = false;
         shieldCollider.enabled = false;
         polygonCollider.enabled = true;
