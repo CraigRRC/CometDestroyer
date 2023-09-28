@@ -27,8 +27,8 @@ public class Spawner : MonoBehaviour
     public float xOffset;
     public float minOffset = -5f;
     public float maxOffset = 5f;
-    public float minSpawnDistance = -10f;
-    public float maxSpawnDistance = 10f;
+    public float minSpawnDistance = -14f;
+    public float maxSpawnDistance = 14f;
 
     public delegate void LevelSwitchEventHandler(int level);
     public event LevelSwitchEventHandler OnLevelSwitch;
@@ -117,7 +117,7 @@ public class Spawner : MonoBehaviour
             CometReference?.Invoke(comet);
             arrayToSpawn[i] = null;
             comet.gameObject.SetActive(true);
-            comet.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(xOffset, -1f) * forceAmount, ForceMode2D.Impulse);
+            comet.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.down * forceAmount, ForceMode2D.Impulse);
             canWeSpawn = false;
             i++;
             runningTime = 0f;

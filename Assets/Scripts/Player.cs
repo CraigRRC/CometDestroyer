@@ -74,14 +74,15 @@ public class Player : MonoBehaviour
 
 
             }
+            else if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                DropShield();
+            }
         }
        
         if (!canShield && playerStates != PlayerStates.Invul)
         {
-            playerStates = PlayerStates.Alive;
-            shieldArt.enabled = false;
-            shieldCollider.enabled = false;
-            polygonCollider.enabled = true;
+            DropShield();
         }
         
         if(availiableShield < 2f)
@@ -98,55 +99,54 @@ public class Player : MonoBehaviour
         if(playerStates == PlayerStates.Invul)
         {
             invulTimer += Time.deltaTime;
-            shieldArt.enabled = true;
-            shieldCollider.enabled = true;
-            polygonCollider.enabled = false;
+            EnableShield();
             spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.2f);
             if(invulTimer > playerVulnerabilityTime)
             {
                 spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1f);
-                shieldArt.enabled = false;
-                shieldCollider.enabled = false;
-                polygonCollider.enabled = true;
-                playerStates = PlayerStates.Alive;
+                DropShield();
                 invulTimer = 0f;
                 
             }
 
-            //StartCoroutine(PlayerVulnerable());
             
         }
         else if(playerStates == PlayerStates.Shielded)
         {
             availiableShield -= Time.deltaTime;
-            if(availiableShield < 0.1f)
+            if (availiableShield < 0.1f)
             {
-                playerHoldingShift = false;
                 canShield = false;
             }
             // availiable shield descreases by time.deltatime
-            shieldArt.enabled = true;
-            shieldCollider.enabled = true;
-            polygonCollider.enabled = false;
+            EnableShield();
         }
     }
 
+    private void EnableShield()
+    {
+        shieldArt.enabled = true;
+        shieldCollider.enabled = true;
+        polygonCollider.enabled = false;
+    }
+
+    private void DropShield()
+    {
+        playerStates = PlayerStates.Alive;
+        shieldArt.enabled = false;
+        shieldCollider.enabled = false;
+        polygonCollider.enabled = true;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (playerStates == PlayerStates.Alive && collision.gameObject.layer == 3)
         {
             m_OnPlayerDeathEvent.Invoke(playerSpawnPos);
-            Debug.Log("did we invoke?");
             playerStates = PlayerStates.Dead;
             playersFirstLife = false;
             gameObject.SetActive(false);
         }
-    }
-
-    public void SetPlayerInvul()
-    {
-        playerStates = PlayerStates.Invul;
     }
 
     public enum PlayerStates
@@ -155,12 +155,6 @@ public class Player : MonoBehaviour
         Invul,
         Shielded,
         Dead,
-    }
-
-    private IEnumerator PlayerVulnerable()
-    {
-        yield return new WaitForSeconds(playerVulnerabilityTime);
-        
     }
 
     public bool IsDead() { return playerStates == PlayerStates.Dead;}

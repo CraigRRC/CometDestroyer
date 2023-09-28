@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class CometRespawn : MonoBehaviour
 {
+    public float minX = -14f;
+    public float maxX = 14f;
     public void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.name != "RespawnProtection")
-        {
-            collision.transform.position = new Vector3(collision.transform.position.x * Random.Range(-0.8f, 0.8f), 10f, collision.transform.position.z);
-        }
-        
+        collision.transform.position = new Vector3(Random.Range(minX, maxX), 10f, collision.transform.position.z);
     }
 }

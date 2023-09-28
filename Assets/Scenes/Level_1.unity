@@ -227,10 +227,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: availiableShield
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
       propertyPath: m_OnPlayerDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1907176465}
@@ -273,7 +269,7 @@ Transform:
   m_GameObject: {fileID: 1151692947}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: 8.23, z: 0.05060791}
+  m_LocalPosition: {x: -0.06, y: 9.5, z: 0.05060791}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -292,15 +288,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   comet: {fileID: 7544182893681157531, guid: 9b4210444f0243d4cbde51f2dbc5e2cf, type: 3}
-  forceAmount: 6
+  forceAmount: 4
   runningTime: 0
   canWeSpawn: 1
-  spawnFrequency: 0.5
-  levelOneSpawnCount: 5
-  levelTwoSpawnCount: 10
-  levelThreeSpawnCount: 15
-  levelFourSpawnCount: 20
-  levelFiveSpawnCount: 25
+  spawnFrequency: 1
+  levelOneSpawnCount: 50
+  levelTwoSpawnCount: 50
+  levelThreeSpawnCount: 1
+  levelFourSpawnCount: 1
+  levelFiveSpawnCount: 1
   levelState: 0
   levelOne: []
   levelTwo: []
@@ -309,10 +305,10 @@ MonoBehaviour:
   levelFive: []
   i: 0
   xOffset: 0
-  minOffset: -2
-  maxOffset: 2
-  minSpawnDistance: -5
-  maxSpawnDistance: 5
+  minOffset: 0
+  maxOffset: 0
+  minSpawnDistance: -12
+  maxSpawnDistance: 12
 --- !u!1 &1231167327
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,6 +535,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2909890727100294144, guid: d7d303126c8e7634aa07f1d611ed058a, type: 3}
+      propertyPath: maxX
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2909890727100294144, guid: d7d303126c8e7634aa07f1d611ed058a, type: 3}
+      propertyPath: minX
+      value: -14
+      objectReference: {fileID: 0}
     - target: {fileID: 3674739146895118402, guid: d7d303126c8e7634aa07f1d611ed058a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.19
