@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour
     public Spawner spawner;
     public GravityMod comet;
     public GravityMod miniComet;
+    public StarGravityMod stars;
 
     public float levelOneGravity = 0f;
     public float levelTwoGravity = 0.1f;
@@ -32,26 +33,31 @@ public class LevelManager : MonoBehaviour
                 Debug.Log("Level 1");
                 comet.gravity = levelOneGravity;
                 miniComet.gravity = levelOneGravity;
+                stars.gravity = levelOneGravity;
                 break;
             case 1:
                 Debug.Log("Level 2");
                 comet.gravity = levelTwoGravity;
                 miniComet.gravity = levelTwoGravity;
+                stars.gravity = levelTwoGravity;
                 break;
             case 2:
                 Debug.Log("Level 3");
                 comet.gravity = levelThreeGravity;
                 miniComet.gravity = levelThreeGravity;
+                stars.gravity= levelThreeGravity;
                 break;
             case 3:
                 Debug.Log("Level 4");
                 comet.gravity = levelFourGravity;
                 miniComet.gravity = levelFourGravity;
+                stars.gravity = levelFourGravity;
                 break;
             case 4:
                 Debug.Log("Level 5");
                 comet.gravity = levelFiveGravity;
                 miniComet.gravity = levelFiveGravity;
+                stars.gravity = levelFiveGravity;
                 break;
             case 5:
                 Debug.Log("End?");

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Scripting;
 
 public class GravityMod : MonoBehaviour
 {
@@ -9,7 +10,10 @@ public class GravityMod : MonoBehaviour
     private void Awake()
     {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = gravity;
-        rb.drag = gravity / 2f;
+        if (rb != null)
+        {
+            rb.gravityScale = gravity;
+            rb.drag = gravity / 2f;
+        }
     }
 }
