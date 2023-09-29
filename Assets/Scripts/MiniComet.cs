@@ -5,16 +5,10 @@ using UnityEngine;
 
 public class MiniComet : Comet
 {
-    private SpriteRenderer miniSpriteRenderer;
 
     public delegate void MiniCometCameraShakeHandler();
     public event MiniCometCameraShakeHandler miniCometCameraShake;
 
-    private void Start()
-    {
-        miniSpriteRenderer = GetComponent<SpriteRenderer>();
-        miniSpriteRenderer.color = spriteRenderer.color;
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

@@ -7,7 +7,6 @@ using UnityEngine.Events;
 
 public class Comet : MonoBehaviour
 {
-    protected SpriteRenderer spriteRenderer;
     private Rigidbody2D comet;
     public MiniComet cometChunk;
     private float spawnOffset = 1f;
@@ -24,9 +23,7 @@ public class Comet : MonoBehaviour
 
     void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
         comet = GetComponent<Rigidbody2D>();
-        spriteRenderer.color = Color.blue;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

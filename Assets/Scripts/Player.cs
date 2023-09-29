@@ -39,9 +39,6 @@ public class Player : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         shieldCollider.enabled = false;
         shieldArt.enabled = false;
-
-
-        spriteRenderer.color = Color.magenta;
     }
 
     private void Start()
