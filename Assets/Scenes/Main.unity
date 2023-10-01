@@ -292,7 +292,7 @@ MonoBehaviour:
   runningTime: 0
   canWeSpawn: 1
   spawnFrequency: 1
-  levelOneSpawnCount: 1
+  levelOneSpawnCount: 100
   levelTwoSpawnCount: 1
   levelThreeSpawnCount: 1
   levelFourSpawnCount: 1
@@ -305,10 +305,10 @@ MonoBehaviour:
   levelFive: []
   i: 0
   xOffset: 0
-  minOffset: 0
-  maxOffset: 0
-  minSpawnDistance: -12
-  maxSpawnDistance: 12
+  minOffset: -5
+  maxOffset: 5
+  minSpawnDistance: -14
+  maxSpawnDistance: 14
 --- !u!1 &1231167327
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,7 +461,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268047869}
   serializedVersion: 8
-  lengthInSec: 1000
+  lengthInSec: 10000
   simulationSpeed: 0.2
   stopAction: 0
   cullingMode: 2
@@ -1084,8 +1084,8 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 0
-    angle: 25
+    type: 4
+    angle: 0
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -1171,7 +1171,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 10
+      value: 100
       mode: 0
       spread: 0
       speed:
@@ -5184,13 +5184,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268047869}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.70710677, z: 0.70710677, w: 0}
-  m_LocalPosition: {x: 0.46784663, y: -2.6, z: 5}
+  m_LocalRotation: {x: -0, y: -0.0052899853, z: 0.99998605, w: 0}
+  m_LocalPosition: {x: 0.46784663, y: 84, z: 6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 90, y: -90, z: 90}
+  m_LocalEulerAnglesHint: {x: 0.606, y: 0, z: 180}
 --- !u!114 &1268047874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5314,11 +5314,11 @@ MonoBehaviour:
   distToOrigin: {x: 0, y: 0}
   cameraZ: -10
   cameraState: 0
-  shakeSpeed: 6
+  shakeSpeed: 4.2
   distToTargetMag: 0
   distToOriginMag: 0
   doOnce: 1
-  shakeRadius: 0.5
+  shakeRadius: 0.22
 --- !u!20 &6094589807672076373
 Camera:
   m_ObjectHideFlags: 0
