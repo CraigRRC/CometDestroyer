@@ -11,7 +11,7 @@ public class Fire : MonoBehaviour
     public bool fireButtonPressed = false;
     public bool canFire = true;
     public float shootCooldown = 0f;
-    public float reloadTime = 0.5f;
+    public float reloadTime = 0.3f;
 
     private void Awake()
     {

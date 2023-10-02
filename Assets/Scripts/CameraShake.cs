@@ -14,11 +14,11 @@ public class CameraShake : MonoBehaviour
     public Vector2 distToOrigin = Vector2.zero;
     public float cameraZ = -10f;
     public CameraStates cameraState;
-    public float shakeSpeed = 6f;
+    public float shakeSpeed = 4.2f;
     public float distToTargetMag;
     public float distToOriginMag;
     public bool doOnce = true;
-    public float shakeRadius = 0.5f;
+    public float shakeRadius = 0.4f;
 
     private void Awake()
     {
