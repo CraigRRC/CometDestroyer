@@ -1,15 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
     public Comet comet;
-    public float forceAmount = 3f;
+    public float minForce = 4f;
+    public float maxForce = 6f;
+    public float forceAmount;
     private float randomSpawnLocation;
     public float runningTime;
+    public bool preLevelSwitch = true;
     public bool canWeSpawn = true;
     public float spawnFrequency = 1f;
     public int levelOneSpawnCount = 10;
@@ -24,17 +28,22 @@ public class Spawner : MonoBehaviour
     public Comet[] levelFour;
     public Comet[] levelFive;
     public int i = 0;
-    public float xOffset;
     public float minOffset = -5f;
     public float maxOffset = 5f;
     public float minSpawnDistance = -14f;
     public float maxSpawnDistance = 14f;
+    public float levelSwitchTime = 15f;
+    public float preLevelSwitchTime = 10f;
+
 
     public delegate void LevelSwitchEventHandler(int level);
     public event LevelSwitchEventHandler OnLevelSwitch;
 
     public delegate void CometReferenceHandler(Comet comet);
     public event CometReferenceHandler CometReference;
+
+    public delegate void PreLevelSwitchHandler();
+    public event PreLevelSwitchHandler OnPreLevelSwitch;
 
     
 
@@ -62,6 +71,8 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
+        forceAmount = UnityEngine.Random.Range(minForce,maxForce);
+
         randomSpawnLocation = UnityEngine.Random.Range(minSpawnDistance, maxSpawnDistance);
         runningTime += Time.deltaTime;
         if (runningTime > spawnFrequency)
@@ -69,21 +80,28 @@ public class Spawner : MonoBehaviour
             canWeSpawn = true;
         }
 
-        if(runningTime > 10f)
+        if(runningTime > preLevelSwitchTime)
+        {
+            if (preLevelSwitch)
+            {
+                preLevelSwitch = false;
+                OnPreLevelSwitch?.Invoke();
+            }
+        }
+
+        if(runningTime > levelSwitchTime)
         {
             runningTime = 0f;
+            preLevelSwitch = true;
             levelState++;
             LevelChanged(levelState);
             i = 0;
         }
-
-        xOffset = UnityEngine.Random.Range(-5f, 5f);
         
     }
 
     private void FixedUpdate()
     {
-        //Switch based on levelState.
         switch (levelState)
         {
             case 0:
@@ -100,8 +118,6 @@ public class Spawner : MonoBehaviour
                 break;
             case 4:
                 SpawnComets(canWeSpawn, levelFive);
-                break;
-            case 5:
                 break;
         }
         

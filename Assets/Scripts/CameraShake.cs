@@ -49,7 +49,6 @@ public class CameraShake : MonoBehaviour
         {
             //Find target
             cameraTargetPos = Random.insideUnitCircle.normalized * shakeRadius;
-            Debug.Log(cameraTargetPos);
             cameraState = CameraStates.HasTarget;
 
         }

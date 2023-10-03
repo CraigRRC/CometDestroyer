@@ -111,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 194265250331066681}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1223,7 +1223,7 @@ MonoBehaviour:
   fireButtonPressed: 0
   canFire: 1
   shootCooldown: 0
-  reloadTime: 0.2
+  reloadTime: 0.3
 --- !u!1 &8343912486661583635
 GameObject:
   m_ObjectHideFlags: 0

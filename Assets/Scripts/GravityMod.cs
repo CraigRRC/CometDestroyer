@@ -1,11 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Scripting;
 
 public class GravityMod : MonoBehaviour
 {
-    public float gravity = 0f;
+    public float gravity;
+
+    private void Start()
+    {
+        gravity = 0f;
+    }
 
     private void Awake()
     {

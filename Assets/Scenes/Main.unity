@@ -188,7 +188,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2451537508709621038, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
       propertyPath: reloadTime
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3590169720739046752, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -257,6 +257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1128041225}
   - component: {fileID: 1128041224}
+  - component: {fileID: 1128041226}
   m_Layer: 0
   m_Name: Earth
   m_TagString: Untagged
@@ -325,12 +326,39 @@ Transform:
   m_GameObject: {fileID: 1128041223}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -32.96, z: 20}
+  m_LocalPosition: {x: 0, y: -32.43, z: 20}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1128041226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128041223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce3b5dab226870947a9f0a2b5bbb98be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawner: {fileID: 1151692949}
+  radius: 0.2
+  TargetVector: {x: 0, y: 0}
+  shakeSpeed: 2
+  earthTravelSpeed: 0.5
+  shouldShake: 0
+  shakeDuration: 1.5
+  runningTime: 0
+  shakeOrigin: {x: 0, y: 0}
+  acquireNewTarget: 0
+  shakeTarget: {x: 0, y: 0}
+  goToOrigin: 0
+  goToTarget: 0
+  shakeHeight: 0.5
+  distToTarget: {x: 0, y: 0}
 --- !u!1 &1151692947
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,11 +404,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   comet: {fileID: 7544182893681157531, guid: 9b4210444f0243d4cbde51f2dbc5e2cf, type: 3}
+  minForce: 4
+  maxForce: 6
   forceAmount: 4
   runningTime: 0
+  preLevelSwitch: 1
   canWeSpawn: 1
-  spawnFrequency: 1
-  levelOneSpawnCount: 100
+  spawnFrequency: 0.5
+  levelOneSpawnCount: 1
   levelTwoSpawnCount: 1
   levelThreeSpawnCount: 1
   levelFourSpawnCount: 1
@@ -392,11 +423,12 @@ MonoBehaviour:
   levelFour: []
   levelFive: []
   i: 0
-  xOffset: 0
   minOffset: -5
   maxOffset: 5
-  minSpawnDistance: -14
-  maxSpawnDistance: 14
+  minSpawnDistance: -12
+  maxSpawnDistance: 12
+  levelSwitchTime: 15
+  preLevelSwitchTime: 3
 --- !u!1 &1231167327
 GameObject:
   m_ObjectHideFlags: 0
@@ -5468,11 +5500,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2909890727100294144, guid: d7d303126c8e7634aa07f1d611ed058a, type: 3}
       propertyPath: maxX
-      value: 14
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2909890727100294144, guid: d7d303126c8e7634aa07f1d611ed058a, type: 3}
       propertyPath: minX
-      value: -14
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3533297174244907620, guid: d7d303126c8e7634aa07f1d611ed058a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3533297174244907620, guid: d7d303126c8e7634aa07f1d611ed058a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 31.306719
+      objectReference: {fileID: 0}
+    - target: {fileID: 3533297174244907620, guid: d7d303126c8e7634aa07f1d611ed058a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 3533297174244907620, guid: d7d303126c8e7634aa07f1d611ed058a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.4379
       objectReference: {fileID: 0}
     - target: {fileID: 3674739146895118402, guid: d7d303126c8e7634aa07f1d611ed058a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5481,6 +5529,22 @@ PrefabInstance:
     - target: {fileID: 3674739146895118402, guid: d7d303126c8e7634aa07f1d611ed058a, type: 3}
       propertyPath: m_LocalPosition.y
       value: -11.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508556707811522972, guid: d7d303126c8e7634aa07f1d611ed058a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508556707811522972, guid: d7d303126c8e7634aa07f1d611ed058a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 30.327682
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508556707811522972, guid: d7d303126c8e7634aa07f1d611ed058a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -14.175
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508556707811522972, guid: d7d303126c8e7634aa07f1d611ed058a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.5591
       objectReference: {fileID: 0}
     - target: {fileID: 7029399242063392182, guid: d7d303126c8e7634aa07f1d611ed058a, type: 3}
       propertyPath: m_LocalScale.y

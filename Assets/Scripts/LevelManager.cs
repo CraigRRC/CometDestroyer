@@ -11,10 +11,10 @@ public class LevelManager : MonoBehaviour
     public StarGravityMod stars;
 
     public float levelOneGravity = 0f;
-    public float levelTwoGravity = 0.1f;
-    public float levelThreeGravity = 0.2f;
-    public float levelFourGravity = 0.3f;
-    public float levelFiveGravity = 0.4f;
+    public float levelTwoGravity = 0.2f;
+    public float levelThreeGravity = 0.4f;
+    public float levelFourGravity = 0.6f;
+    public float levelFiveGravity = 0.8f;
     private void Start()
     {
         spawner.OnLevelSwitch += OnLevelUpdate;
