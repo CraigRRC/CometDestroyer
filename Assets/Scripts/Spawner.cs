@@ -33,7 +33,7 @@ public class Spawner : MonoBehaviour
     public float minSpawnDistance = -14f;
     public float maxSpawnDistance = 14f;
     public float levelSwitchTime = 15f;
-    public float preLevelSwitchTime = 10f;
+    public float preLevelSwitchTime = 5f;
 
 
     public delegate void LevelSwitchEventHandler(int level);

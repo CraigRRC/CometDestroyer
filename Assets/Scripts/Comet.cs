@@ -78,8 +78,8 @@ public class Comet : MonoBehaviour
     }
 
     private void OnDisable()
-    {   //unsubscribe from the camera shake event when we die.
-        //CameraShake
+    {   
+        //unsubscribe from the camera shake event when we die.
         
     }
 }

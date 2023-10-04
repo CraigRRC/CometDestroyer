@@ -21,7 +21,7 @@ public class EarthMovement : MonoBehaviour
     public bool goToTarget;
     public float shakeHeight = 0.5f;
     public Vector2 distToTarget;
-    bool stopMoving = false;
+    public bool stopMoving = false;
 
     private void Awake()
     {
@@ -35,7 +35,6 @@ public class EarthMovement : MonoBehaviour
 
     private void MoveEarthOnLevelSwitch()
     {
-        Debug.Log("Is this getting called?");
         spriteRenderer.enabled = true;
         acquireNewTarget = true;
         runningTime = 0f;
@@ -60,7 +59,7 @@ public class EarthMovement : MonoBehaviour
             {
                 //get direction that we need to go towards
                 distToTarget = shakeTarget - (Vector2)transform.position;
-                Debug.Log(distToTarget.magnitude);
+                //Debug.Log(distToTarget.magnitude);
 
                 //move towards that direction
                 transform.Translate(distToTarget.normalized * shakeSpeed * Time.deltaTime);
@@ -89,7 +88,7 @@ public class EarthMovement : MonoBehaviour
             {
                 //move the earth up one time.
                 transform.Translate(distToTarget.normalized * earthTravelSpeed * Time.deltaTime);
-                if (distToTarget.magnitude < 0.1f)
+                if (distToTarget.magnitude < 0.2f)
                 {
                     stopMoving = true;
                 }
