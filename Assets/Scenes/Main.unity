@@ -1012,7 +1012,7 @@ MonoBehaviour:
   preLevelSwitch: 1
   canWeSpawn: 1
   spawnFrequency: 0.5
-  levelOneSpawnCount: 10
+  levelOneSpawnCount: 1
   levelTwoSpawnCount: 10
   levelThreeSpawnCount: 1
   levelFourSpawnCount: 1
@@ -1023,13 +1023,16 @@ MonoBehaviour:
   levelThree: []
   levelFour: []
   levelFive: []
+  cometsOnScreen: 0
   i: 0
   minOffset: -5
   maxOffset: 5
   minSpawnDistance: -12
   maxSpawnDistance: 12
-  levelSwitchTime: 15
-  preLevelSwitchTime: 10
+  levelSwitchTime: 4
+  preLevelSwitchTime: 1
+  doOnce: 1
+  levelSwitchTimer: 0
 --- !u!1 &1231167327
 GameObject:
   m_ObjectHideFlags: 0

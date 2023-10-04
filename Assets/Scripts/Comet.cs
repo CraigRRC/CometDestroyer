@@ -30,30 +30,11 @@ public class Comet : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Laser>())
         {
-            
-            collision.gameObject.SetActive(false);
-            //spawn an explosion tho
-            if (doOnce)
-            {
-                //shake
-                CameraShake?.Invoke();
-                //spawn mini comet to the right
-                Vector2 rightOffsetVector = new Vector2(transform.position.x + spawnOffset, transform.position.y - spawnOffset);
-                MiniComet rightComet = Instantiate(cometChunk, rightOffsetVector, Quaternion.identity);
-                RightCometReference?.Invoke(rightComet);
-                rightComet.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(0.1f, 1f), -1) * comet.velocity.magnitude, ForceMode2D.Impulse);
-                //Debug.DrawRay(rightComet.transform.position, rightOffsetVector.normalized * spawner.forceAmount, Color.yellow);
 
-                //spawn mini comet to the left
-                Vector2 leftOffsetVector = new Vector2(transform.position.x - spawnOffset, transform.position.y - spawnOffset);
-                MiniComet leftComet = Instantiate(cometChunk, leftOffsetVector, Quaternion.identity);
-                LeftCometReference?.Invoke(leftComet);
-                leftComet.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-0.1f, -1f), -1) * comet.velocity.magnitude, ForceMode2D.Impulse);
-                gameObject.SetActive(false);
-                doOnce = false;
-            }
+            collision.gameObject.SetActive(false);
         }
-        else if (collision.gameObject.layer == 7)
+
+        if (collision.gameObject.GetComponent<Laser>() || collision.gameObject.layer == 7)
         {
             if (doOnce)
             {

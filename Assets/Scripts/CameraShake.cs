@@ -90,6 +90,7 @@ public class CameraShake : MonoBehaviour
     {
         doOnce = true;
         cameraState = CameraStates.MovingtoTarget;
+        spawner.cometsOnScreen--;
     }
 
     public void OnCometReference(Comet comet)

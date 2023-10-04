@@ -9,20 +9,24 @@ public class MiniComet : Comet
     public delegate void MiniCometCameraShakeHandler();
     public event MiniCometCameraShakeHandler miniCometCameraShake;
 
+    public bool miniDoOnce = true;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<Laser>())
+        if (collision.gameObject.GetComponent<Laser>() || collision.gameObject.layer == 7)
         {
-            //shake
-            miniCometCameraShake?.Invoke();
-            collision.gameObject.SetActive(false);
-            gameObject.SetActive(false);
-        }
-        else if(collision.gameObject.layer == 7)
-        {
-            miniCometCameraShake?.Invoke();
-            gameObject.SetActive(false);
+            if (collision.gameObject.GetComponent<Laser>())
+            {
+                collision.gameObject.SetActive(false);
+            }
+
+            if (miniDoOnce)
+            {
+                miniCometCameraShake?.Invoke();
+                miniDoOnce = false;
+                gameObject.SetActive(false);
+                
+            } 
         }
     }
 }

@@ -27,13 +27,16 @@ public class Spawner : MonoBehaviour
     public Comet[] levelThree;
     public Comet[] levelFour;
     public Comet[] levelFive;
+    public int cometsOnScreen = 0;
     public int i = 0;
     public float minOffset = -5f;
     public float maxOffset = 5f;
     public float minSpawnDistance = -14f;
     public float maxSpawnDistance = 14f;
-    public float levelSwitchTime = 15f;
-    public float preLevelSwitchTime = 5f;
+    public float levelSwitchTime = 4f;
+    public float preLevelSwitchTime = 1f;
+    public bool doOnce = true;
+    public float levelSwitchTimer = 0f;
 
 
     public delegate void LevelSwitchEventHandler(int level);
@@ -75,12 +78,18 @@ public class Spawner : MonoBehaviour
 
         randomSpawnLocation = UnityEngine.Random.Range(minSpawnDistance, maxSpawnDistance);
         runningTime += Time.deltaTime;
+
+        if(cometsOnScreen <= 0)
+        {
+            levelSwitchTimer += Time.deltaTime;
+        }
+
         if (runningTime > spawnFrequency)
         {
             canWeSpawn = true;
         }
 
-        if(runningTime > preLevelSwitchTime)
+        if(levelSwitchTimer > preLevelSwitchTime)
         {
             if (preLevelSwitch)
             {
@@ -89,13 +98,44 @@ public class Spawner : MonoBehaviour
             }
         }
 
-        if(runningTime > levelSwitchTime)
+        if(levelSwitchTimer > levelSwitchTime)
         {
             runningTime = 0f;
+            levelSwitchTimer = 0f;
             preLevelSwitch = true;
             levelState++;
+            doOnce = true;
             LevelChanged(levelState);
             i = 0;
+        }
+
+        if (doOnce)
+        {
+            switch (levelState)
+            {
+                case 0:
+                    cometsOnScreen = levelOneSpawnCount * 3;
+                    doOnce = false;
+                    break;
+                case 1:
+                    cometsOnScreen = levelTwoSpawnCount * 3;
+                    doOnce = false;
+                    break;
+                case 2:
+                    cometsOnScreen = levelThreeSpawnCount * 3;
+                    doOnce = false;
+                    break;
+                case 3:
+                    cometsOnScreen = levelFourSpawnCount * 3;
+                    doOnce = false;
+                    break;
+                case 4:
+                    cometsOnScreen = levelFiveSpawnCount * 3;
+                    doOnce = false;
+                    break;
+             
+                   
+            }
         }
         
     }
@@ -112,12 +152,15 @@ public class Spawner : MonoBehaviour
                 break;
             case 2:
                 SpawnComets(canWeSpawn, levelThree);
+               
                 break;
             case 3:
                 SpawnComets(canWeSpawn, levelFour);
+                
                 break;
             case 4:
                 SpawnComets(canWeSpawn, levelFive);
+                
                 break;
         }
         
