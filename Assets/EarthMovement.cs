@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 public class EarthMovement : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class EarthMovement : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public float radius = 0.2f;
     public Vector2 TargetVector = Vector2.zero;
-    public float shakeSpeed = 2f;
+    public float shakeSpeed = 2.5f;
     public float earthTravelSpeed = 0.5f;
     public bool shouldShake = false;
     public float shakeDuration = 1.5f;
@@ -86,9 +87,9 @@ public class EarthMovement : MonoBehaviour
         {
             if(!stopMoving)
             {
-                //move the earth up one time.
+                runningTime += Time.deltaTime;
                 transform.Translate(distToTarget.normalized * earthTravelSpeed * Time.deltaTime);
-                if (distToTarget.magnitude < 0.2f)
+                if (runningTime > shakeDuration + 0.2f)
                 {
                     stopMoving = true;
                 }
