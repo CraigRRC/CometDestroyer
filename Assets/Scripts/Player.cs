@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     public CircleCollider2D shieldCollider = null;
     public SpriteRenderer shieldArt = null;
     
-    private float playerVulnerabilityTime = 3f;
+    public float playerVulnerabilityTime = 1.5f;
     private Vector2 playerSpawnPos;
     public PlayerStates playerStates;
     public float invulTimer = 0f;
@@ -67,7 +67,7 @@ public class Player : MonoBehaviour
     {
         if(canShield)
         {
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.P))
             {
 
                 //check to see if we have any shield to use
@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
 
 
             }
-            else if (Input.GetKeyUp(KeyCode.LeftShift))
+            else if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.P))
             {
                 DropShield();
             }

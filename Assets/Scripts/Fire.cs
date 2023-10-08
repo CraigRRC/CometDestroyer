@@ -21,10 +21,10 @@ public class Fire : MonoBehaviour
     private void Update()
     {
        
-        fireButtonPressed = Input.GetButton("Jump");
+        fireButtonPressed = Input.GetKey(KeyCode.Space);
         if (!canFire)
         {
-            shootCooldown += Time.deltaTime;
+           shootCooldown += Time.deltaTime;
         }
         if(shootCooldown > reloadTime)
         {
@@ -43,7 +43,7 @@ public class Fire : MonoBehaviour
 
     private void FireProjectile(GameObject projectile)
     {
-        Instantiate(projectile, leftBlaster.transform.position, Quaternion.identity);
+        //Instantiate(projectile, leftBlaster.transform.position, Quaternion.identity);
         Instantiate(projectile, rightBlaster.transform.position, Quaternion.identity);
         shootCooldown = 0f;
 

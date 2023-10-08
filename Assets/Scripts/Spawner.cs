@@ -152,15 +152,15 @@ public class Spawner : MonoBehaviour
                 break;
             case 2:
                 SpawnComets(canWeSpawn, levelThree);
-               
                 break;
             case 3:
                 SpawnComets(canWeSpawn, levelFour);
-                
                 break;
             case 4:
                 SpawnComets(canWeSpawn, levelFive);
-                
+                break;
+            default:
+                Debug.Log("Do nothing");
                 break;
         }
         
@@ -210,6 +210,9 @@ public class Spawner : MonoBehaviour
                 break;
             case 4:
                 OnLevelSwitch?.Invoke((Int32)LevelState.Five);
+                break;
+            case 5:
+                OnLevelSwitch?.Invoke((Int32)LevelState.EndGame);
                 break;
         }
     }

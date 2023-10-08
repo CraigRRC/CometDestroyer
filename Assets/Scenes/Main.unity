@@ -239,9 +239,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2451537508709621038, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: reloadTime
-      value: 0.2
-      objectReference: {fileID: 0}
+      propertyPath: leftBlaster
+      value: 
+      objectReference: {fileID: 2069879673}
     - target: {fileID: 3590169720739046752, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -283,42 +283,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: OnShieldEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: OnCanWeShieldEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: OnPlayerDeathEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: OnShieldEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: OnShieldEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 87933123}
-    - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: OnCanWeShieldEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: OnShieldEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: OnShieldEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnShieldUse
-      objectReference: {fileID: 0}
-    - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: OnCanWeShieldEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 87933123}
-    - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
       propertyPath: OnPlayerDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1907176465}
@@ -326,77 +290,9 @@ PrefabInstance:
       propertyPath: OnPlayerDeathEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 87933123}
-    - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: m_OnPlayerDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1907176465}
-    - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: m_OnPlayerDeathEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 5544956462132038224}
-    - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: OnCanWeShieldEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: OnPlayerDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: OnPlayerDeathEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: OnCanWeShieldEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangeShieldColor
-      objectReference: {fileID: 0}
-    - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: OnPlayerDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnPlayerDeath
-      objectReference: {fileID: 0}
-    - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: OnPlayerDeathEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: LoseLife
-      objectReference: {fileID: 0}
-    - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: OnShieldEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UIManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: OnCanWeShieldEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UIManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: OnPlayerDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayerSpawner, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: OnPlayerDeathEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UIManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: OnShieldEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: OnCanWeShieldEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: OnPlayerDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 5685430065713874010, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: OnPlayerDeathEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 7050306732672429057, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
       propertyPath: m_Name
       value: PlayerWithGun
-      objectReference: {fileID: 0}
-    - target: {fileID: 8358873606433618951, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1042,12 +938,12 @@ MonoBehaviour:
   runningTime: 0
   preLevelSwitch: 1
   canWeSpawn: 1
-  spawnFrequency: 0.5
+  spawnFrequency: 1
   levelOneSpawnCount: 50
-  levelTwoSpawnCount: 60
-  levelThreeSpawnCount: 65
-  levelFourSpawnCount: 70
-  levelFiveSpawnCount: 75
+  levelTwoSpawnCount: 55
+  levelThreeSpawnCount: 60
+  levelFourSpawnCount: 65
+  levelFiveSpawnCount: 70
   levelState: 0
   levelOne: []
   levelTwo: []
@@ -6217,6 +6113,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2066909035}
   m_CullTransparentMesh: 1
+--- !u!1 &2069879673 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2008963666831771988, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
+  m_PrefabInstance: {fileID: 158469235}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &352557284288361529
 GameObject:
   m_ObjectHideFlags: 0

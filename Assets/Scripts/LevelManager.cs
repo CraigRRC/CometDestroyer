@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -20,10 +21,6 @@ public class LevelManager : MonoBehaviour
         spawner.OnLevelSwitch += OnLevelUpdate;
     }
 
-    void Update()
-    {
-        
-    }
 
     public void OnLevelUpdate(int level)
     {
@@ -60,7 +57,8 @@ public class LevelManager : MonoBehaviour
                 stars.gravity = levelFiveGravity;
                 break;
             case 5:
-                Debug.Log("End?");
+                SceneManager.LoadScene("Win");
+                Debug.Log("Win");
                 break;
             default:
                 Debug.Log("do Nothing");
