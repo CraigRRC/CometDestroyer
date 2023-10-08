@@ -67,7 +67,7 @@ public class Player : MonoBehaviour
     {
         if(canShield)
         {
-            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.P))
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.P))
             {
 
                 //check to see if we have any shield to use
@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
 
 
             }
-            else if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.P))
+            else if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift) || Input.GetKeyUp(KeyCode.P))
             {
                 DropShield();
             }
