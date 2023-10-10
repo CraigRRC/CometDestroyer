@@ -21,7 +21,7 @@ public class Fire : MonoBehaviour
     private void Update()
     {
        
-        fireButtonPressed = Input.GetKey(KeyCode.Space);
+        fireButtonPressed = Input.GetButton("Jump");
         if (!canFire)
         {
            shootCooldown += Time.deltaTime;

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
-using static UnityEditor.FilePathAttribute;
 
 public class PlayerSpawner : MonoBehaviour
 {
@@ -11,26 +10,6 @@ public class PlayerSpawner : MonoBehaviour
     public float runningTimer = 0f;
     public Vector2 playerRespawnPos = Vector2.zero;
     public bool respawn = false;
-
-    private void Awake()
-    {
-   
-    }
-
-    private void Start()
-    {
-       
-    }
-
-    private void OnDestroy()
-    {
-       
-    }
-
-    private void Update()
-    {
-        
-    }
 
     public void OnPlayerDeath(Vector2 location)
     {

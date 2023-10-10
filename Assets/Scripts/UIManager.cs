@@ -44,18 +44,21 @@ public class UIManager : MonoBehaviour
 
     public void ChangeShieldColor(bool canShield)
     {
-        shieldBar.color = canShield ? Color.green : Color.red;
+        shieldBar.color = canShield ? Color.blue : Color.red;
     }
 
     public void LoseLife(Vector2 playerPos)
     {
-        bool playerAlive = lives[lives.Length - 1].gameObject.activeSelf;
+        bool playerAlive = lives[lives.Length - 1].fillCenter;
         //Last life will get bonked if second life is bonked.
-        lives[2].gameObject.SetActive(lives[1].gameObject.activeSelf);
+        //lives[2].gameObject.SetActive(lives[1].gameObject.activeSelf);
+        lives[2].fillCenter = lives[1].fillCenter;
         //Second life will get bonked if first life is already bonked
-        lives[1].gameObject.SetActive(lives[0].gameObject.activeSelf);
+        //lives[1].gameObject.SetActive(lives[0].gameObject.activeSelf);
+        lives[1].fillCenter = lives[0].fillCenter ;
         //First life will always get bonked.
-        lives[0].gameObject.SetActive(false);
+        //lives[0].gameObject.SetActive(false);
+        lives[0].fillCenter = false;
 
         switch (playerAlive)
         {

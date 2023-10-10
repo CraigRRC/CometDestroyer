@@ -1,11 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
+
 
 [System.Serializable]
 public class OnPlayerDeathEvent : UnityEvent<Vector2> { }
@@ -105,10 +101,8 @@ public class Player : MonoBehaviour
             OnShieldColour?.Invoke(canShield);
             invulTimer += Time.deltaTime;
             EnableShield();
-            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.2f);
             if(invulTimer > playerVulnerabilityTime)
             {
-                spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1f);
                 DropShield();
                 invulTimer = 0f;
                 
