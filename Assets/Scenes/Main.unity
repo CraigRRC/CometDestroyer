@@ -206,6 +206,7 @@ MonoBehaviour:
   spawner: {fileID: 1151692949}
   levelText: {fileID: 1185831897}
   scoreText: {fileID: 1845604570250499222}
+  score: 0
 --- !u!4 &87933124
 Transform:
   m_ObjectHideFlags: 0
@@ -240,6 +241,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 986798162574068062, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
+      propertyPath: moveSpeed
+      value: 2.8
+      objectReference: {fileID: 0}
     - target: {fileID: 2451537508709621038, guid: 82341f5c22969b44d97ceb76695aa69f, type: 3}
       propertyPath: leftBlaster
       value: 
@@ -1078,18 +1083,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   comet: {fileID: 7544182893681157531, guid: 9b4210444f0243d4cbde51f2dbc5e2cf, type: 3}
-  minForce: 4
-  maxForce: 6
+  minForce: 2
+  maxForce: 4
   forceAmount: 4
   runningTime: 0
   preLevelSwitch: 1
   canWeSpawn: 1
-  spawnFrequency: 0.5
-  levelOneSpawnCount: 1
-  levelTwoSpawnCount: 1
-  levelThreeSpawnCount: 1
-  levelFourSpawnCount: 1
-  levelFiveSpawnCount: 1
+  spawnFrequency: 1.5
+  levelOneSpawnCount: 10
+  levelTwoSpawnCount: 15
+  levelThreeSpawnCount: 20
+  levelFourSpawnCount: 25
+  levelFiveSpawnCount: 30
   levelState: 0
   levelOne: []
   levelTwo: []
@@ -1140,7 +1145,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -10}
+  m_AnchoredPosition: {x: -50, y: -10}
   m_SizeDelta: {x: 200, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1185831897

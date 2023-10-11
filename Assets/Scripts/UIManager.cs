@@ -43,9 +43,13 @@ public class UIManager : MonoBehaviour
 
     private void OnCometReference(Comet comet)
     {
-        comet.CameraShake += OnCameraShake;
-        comet.LeftCometReference += OnLeftCometReference;
-        comet.RightCometReference += OnRightCometReference;
+        if(comet != null)
+        {
+            comet.CameraShake += OnCameraShake;
+            comet.LeftCometReference += OnLeftCometReference;
+            comet.RightCometReference += OnRightCometReference;
+        }
+       
     }
 
     private void OnCameraShake()
@@ -56,7 +60,11 @@ public class UIManager : MonoBehaviour
 
     private void OnRightCometReference(MiniComet comet)
     {
-        comet.miniCometCameraShake += OnRightMiniCometCameraShake;
+        if(comet != null)
+        {
+            comet.miniCometCameraShake += OnRightMiniCometCameraShake;
+        }
+       
         
     }
 
@@ -68,7 +76,11 @@ public class UIManager : MonoBehaviour
 
     private void OnLeftCometReference(MiniComet comet)
     {
-        comet.miniCometCameraShake += OnLeftMiniCometCameraShake;
+        if(comet != null)
+        {
+            comet.miniCometCameraShake += OnLeftMiniCometCameraShake;
+        }
+        
     }
 
     private void OnLeftMiniCometCameraShake()
@@ -115,10 +127,14 @@ public class UIManager : MonoBehaviour
 
     public void OnShieldUse(float shieldAmount)
     {
-        //Convert to a percent
-        float shieldAsPercent = shieldAmount / player.GetPlayerShieldMax() * 100;
-        //Apply to the actual bar
-        shieldBar.fillAmount = shieldAsPercent / 100;
+        if(player != null)
+        {
+            //Convert to a percent
+            float shieldAsPercent = shieldAmount / player.GetPlayerShieldMax() * 100;
+            //Apply to the actual bar
+            shieldBar.fillAmount = shieldAsPercent / 100;
+        }
+        
     }
 
     public void ChangeShieldColor(bool canShield)
@@ -152,11 +168,18 @@ public class UIManager : MonoBehaviour
 
     private void OnDisable()
     {
-        player.OnShieldUse -= OnShieldUse;
-        player.OnShieldColour -= ChangeShieldColor;
-        spawner.OnPreLevelSwitch -= TurnTextOn;
-        spawner.OnLevelSwitch -= TurnTextOff;
-        spawner.OnLevelSwitch -= UpdateLevelText;
-        spawner.CometReference -= OnCometReference;
+        if (player != null)
+        {
+            player.OnShieldUse -= OnShieldUse;
+            player.OnShieldColour -= ChangeShieldColor;
+        }
+       if(spawner != null)
+        {
+            spawner.OnPreLevelSwitch -= TurnTextOn;
+            spawner.OnLevelSwitch -= TurnTextOff;
+            spawner.OnLevelSwitch -= UpdateLevelText;
+            spawner.CometReference -= OnCometReference;
+        }
+        
     }
 }

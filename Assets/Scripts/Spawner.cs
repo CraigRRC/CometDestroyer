@@ -100,6 +100,8 @@ public class Spawner : MonoBehaviour
 
         if(levelSwitchTimer > levelSwitchTime)
         {
+            minForce += 2;
+            maxForce += 2;
             runningTime = 0f;
             levelSwitchTimer = 0f;
             preLevelSwitch = true;
@@ -146,21 +148,23 @@ public class Spawner : MonoBehaviour
         {
             case 0:
                 SpawnComets(canWeSpawn, levelOne);
+                
                 break;
             case 1:
                 SpawnComets(canWeSpawn, levelTwo);
+               
                 break;
             case 2:
                 SpawnComets(canWeSpawn, levelThree);
+                
                 break;
             case 3:
                 SpawnComets(canWeSpawn, levelFour);
+                
                 break;
             case 4:
                 SpawnComets(canWeSpawn, levelFive);
-                break;
-            default:
-                Debug.Log("Do nothing");
+               
                 break;
         }
         
