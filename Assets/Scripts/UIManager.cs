@@ -13,6 +13,14 @@ public class UIManager : MonoBehaviour
     public GameObject gravityText;
     public Player player;
     public Spawner spawner;
+    public TextMeshProUGUI levelText;
+    public TextMeshProUGUI scoreText;
+
+
+    public int score;
+
+    public static UIManager instance;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,8 +28,79 @@ public class UIManager : MonoBehaviour
         player.OnShieldColour += ChangeShieldColor;
         spawner.OnPreLevelSwitch += TurnTextOn;
         spawner.OnLevelSwitch += TurnTextOff;
+        spawner.OnLevelSwitch += UpdateLevelText;
+        spawner.CometReference += OnCometReference;
         shieldBar.color = Color.green;
         gravityText.SetActive(false);
+        score = 0;
+    }
+
+    public void Awake()
+    {
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
+    private void OnCometReference(Comet comet)
+    {
+        comet.CameraShake += OnCameraShake;
+        comet.LeftCometReference += OnLeftCometReference;
+        comet.RightCometReference += OnRightCometReference;
+    }
+
+    private void OnCameraShake()
+    {
+        score += 20;
+        scoreText.text = score.ToString();
+    }
+
+    private void OnRightCometReference(MiniComet comet)
+    {
+        comet.miniCometCameraShake += OnRightMiniCometCameraShake;
+        
+    }
+
+    private void OnRightMiniCometCameraShake()
+    {
+        score += 20;
+        scoreText.text = score.ToString();
+    }
+
+    private void OnLeftCometReference(MiniComet comet)
+    {
+        comet.miniCometCameraShake += OnLeftMiniCometCameraShake;
+    }
+
+    private void OnLeftMiniCometCameraShake()
+    {
+        score += 20;
+        scoreText.text = score.ToString();
+    }
+
+    private void UpdateLevelText(int level)
+    {
+        if(level == 5)
+        {
+            levelText.text = "You win!";
+        }
+        else
+        {
+            level = level + 1;
+            levelText.text = "Level " + level.ToString();
+            int scoreMultiplyer = 1;
+            //How many lives are left?
+            foreach (var life in lives)
+            {
+                if (life.fillCenter)
+                {
+                    scoreMultiplyer++;
+                }
+            }
+            score *= scoreMultiplyer;
+            scoreText.text = score.ToString();
+            
+            //Multiply score by lives left.
+        }
     }
 
     private void TurnTextOff(int level)
@@ -77,5 +156,7 @@ public class UIManager : MonoBehaviour
         player.OnShieldColour -= ChangeShieldColor;
         spawner.OnPreLevelSwitch -= TurnTextOn;
         spawner.OnLevelSwitch -= TurnTextOff;
+        spawner.OnLevelSwitch -= UpdateLevelText;
+        spawner.CometReference -= OnCometReference;
     }
 }

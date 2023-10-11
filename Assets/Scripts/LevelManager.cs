@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,7 @@ public class LevelManager : MonoBehaviour
     public GravityMod comet;
     public GravityMod miniComet;
     public StarGravityMod stars;
+    public TextMeshProUGUI levelText;
 
     public float levelOneGravity = 0f;
     public float levelTwoGravity = 0.2f;
