@@ -102,6 +102,10 @@ public class Spawner : MonoBehaviour
         {
             minForce += 2;
             maxForce += 2;
+            if(spawnFrequency != 1f)
+            {
+                spawnFrequency -= .5f;
+            }
             runningTime = 0f;
             levelSwitchTimer = 0f;
             preLevelSwitch = true;

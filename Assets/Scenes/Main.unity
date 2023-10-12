@@ -1089,12 +1089,12 @@ MonoBehaviour:
   runningTime: 0
   preLevelSwitch: 1
   canWeSpawn: 1
-  spawnFrequency: 1.5
+  spawnFrequency: 2.5
   levelOneSpawnCount: 10
-  levelTwoSpawnCount: 15
-  levelThreeSpawnCount: 20
-  levelFourSpawnCount: 25
-  levelFiveSpawnCount: 30
+  levelTwoSpawnCount: 20
+  levelThreeSpawnCount: 30
+  levelFourSpawnCount: 40
+  levelFiveSpawnCount: 50
   levelState: 0
   levelOne: []
   levelTwo: []

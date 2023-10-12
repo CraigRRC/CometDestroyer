@@ -99,19 +99,7 @@ public class UIManager : MonoBehaviour
         {
             level = level + 1;
             levelText.text = "Level " + level.ToString();
-            int scoreMultiplyer = 1;
-            //How many lives are left?
-            foreach (var life in lives)
-            {
-                if (life.fillCenter)
-                {
-                    scoreMultiplyer++;
-                }
-            }
-            score *= scoreMultiplyer;
-            scoreText.text = score.ToString();
-            
-            //Multiply score by lives left.
+           
         }
     }
 
@@ -123,6 +111,19 @@ public class UIManager : MonoBehaviour
     private void TurnTextOn()
     {
         gravityText.SetActive(true);
+        int scoreMultiplyer = 1;
+        //How many lives are left?
+        foreach (var life in lives)
+        {
+            if (life.fillCenter)
+            {
+                scoreMultiplyer++;
+            }
+        }
+        score *= scoreMultiplyer;
+        scoreText.text = score.ToString();
+
+        //Multiply score by lives left.
     }
 
     public void OnShieldUse(float shieldAmount)
